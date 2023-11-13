@@ -7,7 +7,7 @@ mkdir -p $HOME/mydata/raw/chembl20
 mkdir -p $HOME/mydata/trgpred/chembl20
 mkdir -p $HOME/myprogs
 
-svn export https://github.com/ml-jku/lsc/trunk mycode
+git clone  https://github.com/ml-jku/lsc/trunk mycode
 $HOME/mycode/cppCode/exec/install.sh
 
 wget ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_20/chembl_20.sdf.gz --directory=$HOME/mydata/raw/chembl20
