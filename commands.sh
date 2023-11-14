@@ -101,6 +101,9 @@ $HOME/mycode/cppCode/exec/clusterMinFull.exec chembl20 ECFC4 200
 
 #For methods implemented in Python prepare data first to python format
 #requires that data is available in binary (C/C++) format
+
+## change the around the line 197 in readDataset.py
+## np.long ==> getattr(np, 'long')
 python3 $HOME/mycode/pythonCode/readDataset.py
 python3 $HOME/mycode/pythonCode/readMoleculesDeepchem.py
 python3 $HOME/mycode/pythonCode/readMoleculesLSTM.py
