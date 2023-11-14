@@ -44,4 +44,7 @@ export LIBRARY_PATH=$HOME/conda/envs/rosetta/lib:$LIBRARY_PATH
 # modifiy the line in Makefile the mycode/cppCode/exec/Makefile
 # CF = -lgsl -lgslcblas -lm $(MP) $(DBG) -I/home/huw/conda/envs/rosetta/include -I/home/huw/myprogs/source/boost_1_69_0/
 
+g++ svmHyper.cpp targetPipeline.cpp sums.cpp /home/huw/myprogs/lib/libsvm-dense-3.17Modified/svm.o -o svmHyper.exec -lconfig++ -lgsl -lgslcblas -lm -I/home/huw/conda/envs/rosetta/include -I/home/huw/myprogs/source/boost_1_69_0/
+g++ svmHyper.cpp targetPipeline.cpp sums.cpp /home/huw/myprogs/lib/libsvm-dense-3.17Modified/svm.o -o svmHyper.exec -std=c++11 -lconfig++ -lgsl -lgslcblas -lm -I/home/huw/conda/envs/rosetta/include -I/home/huw/myprogs/source/boost_1_69_0/
+
 make -C $HOME/mycode/cppCode/exec all multiproc=1
