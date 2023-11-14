@@ -79,7 +79,7 @@ unzip $HOME/mydata/raw/chembl20/clusterMinFull.zip -d $HOME/mydata/trgpred/chemb
 #python3 $HOME/mycode/csvToSparse.py -propertiesName semisparse
 #bash:
 grep -c '' semisparse.csv # 1456021
-tail -n +2 semisparse.csv | split -l 500000 - split_
+tail -n +2 semisparse.csv | split -l 300000 - split_
 for file in split_*
 do
     head -n 1 semisparse.csv > tmp_file
@@ -87,10 +87,10 @@ do
     mv -f tmp_file "${file}.csv"
     python3 $HOME/mycode/csvToSparse.py -propertiesName "$file"
 done
+ls split_* > filenames
+cat `ls split_*.fpf | sort ` > semisparse.fpf  
 
-cat `ls split_* | sort ` > semisparse.fpf  
-rm `ls split_*`
-
+rm split_*
 
 python3 $HOME/mycode/csvToSparse.py -propertiesName toxicophores
 
