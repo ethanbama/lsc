@@ -33,5 +33,8 @@ export CPATH=$HOME/myprogs/lib/libconfig/include:$CPATH
 export LIBRARY_PATH=$HOME/myprogs/lib/libconfig/lib:$LIBRARY_PATH
 export LD_LIBRARY_PATH=$HOME/myprogs/lib/libconfig/lib:$LD_LIBRARY_PATH
 
+export LD_LIBRARY_PATH=$HOME/conda/envs/rosetta/lib/:$LD_LIBRARY_PATH
+export LIBRARY_PATH=$HOME/conda/envs/rosetta/lib:$LIBRARY_PATH
+
 #change into cpp pipeline directory
 make -C $HOME/mycode/cppCode/exec all multiproc=1
