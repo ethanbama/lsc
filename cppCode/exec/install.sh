@@ -11,6 +11,11 @@ wget https://src.fedoraproject.org/repo/pkgs/libconfig/libconfig-1.5.tar.gz/a939
 wget http://dlib.net/files/dlib-19.0.zip --directory-prefix=$HOME/myprogs/source
 wget http://www.bioinf.jku.at/research/lsc/libsvm-dense-3.17Modified.zip --directory-prefix=$HOME/myprogs/source
 
+# this version is required
+# wget https://boostorg.jfrog.io/artifactory/main/release/1.69.0/source/boost_1_69_0.tar.gz
+# modifiy the Makefile the mycode/cppCode/exec/Makefile
+# CF = -lgsl -lgslcblas -lm $(MP) $(DBG) -I/home/huw/conda/envs/rosetta/include -I/home/huw/myprogs/source/boost_1_69_0/
+
 tar -xzvf $HOME/myprogs/source/libconfig-1.5.tar.gz --directory=$HOME/myprogs/source
 unzip $HOME/myprogs/source/dlib-19.0.zip -d $HOME/myprogs/source
 unzip $HOME/myprogs/source/libsvm-dense-3.17Modified.zip -d $HOME/myprogs/source
