@@ -75,7 +75,26 @@ unzip $HOME/mydata/raw/chembl20/clusterMinFull.zip -d $HOME/mydata/trgpred/chemb
 
 #get data from csv to sparse format
 #takes extremely much memory at least for semisparse and may result in a strange malloc error (on certain platforms only?), but writes out file
-python3 $HOME/mycode/csvToSparse.py -propertiesName semisparse
+#this is too big, split them
+#python3 $HOME/mycode/csvToSparse.py -propertiesName semisparse
+#bash:
+grep -c '' semisparse.csv # 1456021
+tail -n +2 semisparse.csv | split -l 500000 - split_
+for file in split_*
+do
+    head -n 1 semisparse.csv > tmp_file
+    cat "$file" >> tmp_file
+    mv -f tmp_file "$file"
+done
+mv split_aa split_aa.csv
+mv split_ab split_ab.csv
+mv split_ac splitac.csv
+
+python3 $HOME/mycode/csvToSparse.py -propertiesName split_aa
+python3 $HOME/mycode/csvToSparse.py -propertiesName split_ab
+python3 $HOME/mycode/csvToSparse.py -propertiesName split_ac
+cat split_aa.fpf split_ab.fpf split_ac.fpf > semisparse.fpf 
+
 python3 $HOME/mycode/csvToSparse.py -propertiesName toxicophores
 
 $HOME/mycode/cppCode/exec/convertFPFBinary.exec chembl20 chembl20 ECFC4
