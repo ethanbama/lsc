@@ -84,16 +84,13 @@ for file in split_*
 do
     head -n 1 semisparse.csv > tmp_file
     cat "$file" >> tmp_file
-    mv -f tmp_file "$file"
+    mv -f tmp_file "${file}.csv"
+    python3 $HOME/mycode/csvToSparse.py -propertiesName "$file"
 done
-mv split_aa split_aa.csv
-mv split_ab split_ab.csv
-mv split_ac splitac.csv
 
-python3 $HOME/mycode/csvToSparse.py -propertiesName split_aa
-python3 $HOME/mycode/csvToSparse.py -propertiesName split_ab
-python3 $HOME/mycode/csvToSparse.py -propertiesName split_ac
-cat split_aa.fpf split_ab.fpf split_ac.fpf > semisparse.fpf 
+cat `ls split_* | sort ` > semisparse.fpf  
+rm `ls split_*`
+
 
 python3 $HOME/mycode/csvToSparse.py -propertiesName toxicophores
 
