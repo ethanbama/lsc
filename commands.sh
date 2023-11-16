@@ -55,6 +55,15 @@ wget https://bitbucket.org/jskDr/pcfp/get/39eb310c1b95.zip --directory=$HOME/myp
 unzip $HOME/myprogs/39eb310c1b95.zip -d $HOME/myprogs/
 ant -buildfile $HOME/myprogs/jskDr-pcfp-39eb310c1b95/build.xml
 
+export CPATH=$HOME/myprogs/lib/libsvm-dense-3.17Modified:$CPATH
+export CPATH=$HOME/myprogs/lib/dlib-19.0:$CPATH
+export CPATH=$HOME/myprogs/lib/libconfig/include:$CPATH
+export LIBRARY_PATH=$HOME/myprogs/lib/libconfig/lib:$LIBRARY_PATH
+export LD_LIBRARY_PATH=$HOME/myprogs/lib/libconfig/lib:$LD_LIBRARY_PATH
+
+export LD_LIBRARY_PATH=$HOME/conda/envs/rosetta/lib/:$LD_LIBRARY_PATH
+export LIBRARY_PATH=$HOME/conda/envs/rosetta/lib:$LIBRARY_PATH
+
 $HOME/mycode/callChemblScript1.sh #sparse features
 $HOME/mycode/callChemblScript2.sh #part of semisparse features
 $HOME/mycode/callChemblScript3.sh #part of semisparse features
